@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Picture Describer</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+  <style>
+    /* Import Google font - Poppins */
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+        display: flex;
+        padding: 0 10px;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        background: #189A96;
+    }
+
+    .container {
+        width: 640px; /* Increased from 440px */
+        border-radius: 7px;
+        background: #fff;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+        text-align: center; /* Center align text inside the container */
+        padding: 20px;
+    }
+
+    .container h1 {
+        font-size: 30px; /* Increased from 25px */
+        font-weight: 500;
+        padding: 16px 0;
+        border-bottom: 1px solid #ccc;
+    }
+
+    #showImageBtn {
+        border: none;
+        outline: none;
+        color: #fff;
+        background: #189A96;
+        cursor: pointer;
+        padding: 15px 0;
+        font-size: 17px;
+        border-radius: 5px;
+        width: 40%;
+        margin: 20px 0;
+        transition: all 0.3s ease;
+    }
+
+    #showImageBtn:hover {
+        background: #106E6B;
+    }
+
+    #imageContainer {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    #imageContainer img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 7px;
+    }
+      #imageContainer {
+        text-align: center; /* Center the image container */
+        margin: 20px 0; /* Add margin for spacing */
+      }
+
+      #randomImage {
+        width: 450px; /* Set the width */
+        height: 450px; /* Set the height */
+        display: block;
+        margin: 0 auto; /* Center the image */
+      }
+
+    #description {
+        width: 100%;
+        height: 100px; /* Increased from 100px */
+        outline: none;
+        padding: 10px;
+        font-size: 18px;
+        border-radius: 5px;
+        border: 1px solid #bfbfbf;
+        margin-bottom: 20px;
+    }
+
+    #description::placeholder {
+        color: #aaa;
+    }
+
+    #description:focus::placeholder {
+        color: #bfbfbf;
+    }
+
+    @media screen and (max-width: 690px) { /* Adjusted from 470px */
+        .container {
+            width: 90%; /* Changed to percentage for better responsiveness */
+        }
+
+        .container h1 {
+            font-size: 25px;
+        }
+
+        #description {
+            height: 100px;
+            font-size: 17px;
+        }
+
+        #showImageBtn {
+            padding: 14px 0;
+            font-size: 16px;
+        }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+      <h1>Describe the Image</h1>
+      <button id="showImageBtn">Show Image</button>
+      <div id="imageContainer">
+          <img id="randomImage" src="" alt="Random Image" style="display: none;" align="center">
+      </div>
+      <textarea id="description" placeholder="Describe the image here..."></textarea>
+  </div>
+  <script>
+    const images = [
+        'https://media.baamboozle.com/uploads/images/142961/1602500351_390824',
+        'https://www.bing.com/th?id=OIP.cpJvxgpY4YvaKeiWe5boAwHaFN&w=223&h=185&c=8&rs=1&qlt=90&o=6&pid=3.1&rm=2',
+        'https://th.bing.com/th/id/OIG1.sVLPHt3xoALfBul3rpFX?w=1024&h=1024&rs=1&pid=ImgDetMain',
+      'https://th.bing.com/th/id/OIG3.YpY4AuhK9euKNT0BOHoq?w=270&h=270&c=6&r=0&o=5&pid=ImgGn',
+      'https://th.bing.com/th/id/OIG2.IugYPnbKW6FsLjX.LqIX?pid=ImgGn',
+      'https://th.bing.com/th/id/OIG2.jKkN9wPq0ic.KvZmLwiz?pid=ImgGn',
+      'https://th.bing.com/th/id/OIG2.gG1B5XdT_NzUz.emSHtF?pid=ImgGn',
+      'https://th.bing.com/th/id/OIG2.8Aw2iYFOxeftiHnjCjOF?pid=ImgGn',
+      'https://th.bing.com/th/id/OIG3.W19LfUcKa.4eUWFx14x9?pid=ImgGn',
+      'https://th.bing.com/th/id/OIG2.bem6gSuoR1V.pj8zyV_J?pid=ImgGn',
+      'https://th.bing.com/th/id/OIG3.bEbyujDbmGrPnjcW6A1q?w=1024&h=1024&rs=1&pid=ImgDetMain',
+      'https://th.bing.com/th/id/OIG1.2UgR2Fy6mDflO8NmB06M?pid=ImgGn',
+      'https://th.bing.com/th/id/OIG1.KyiGtu2xXZUxyhiB7AJn?pid=ImgGn',
+      'https://th.bing.com/th/id/OIG2..iB8RAalUUhTEukJH6m3?w=1024&h=1024&rs=1&pid=ImgDetMain',
+      'https://th.bing.com/th/id/OIG2.AokPQ8ji_4nXjYdA1Utv?pid=ImgGn',
+      'https://th.bing.com/th/id/OIG2.spNOoW32J_a.VGaB2D2Z?pid=ImgGn',
+      'https://th.bing.com/th/id/OIG4.W09AJ2EDGlMQ_ueaKQO5?pid=ImgGn',
+      'https://th.bing.com/th/id/OIG2.6DWHPrp.o5yVceXXlhSl?w=1024&h=1024&rs=1&pid=ImgDetMain',
+      'https://th.bing.com/th/id/OIG3.I8rdoioQZ2j8gFa_x.Xa?w=1024&h=1024&rs=1&pid=ImgDetMain',
+      'https://th.bing.com/th/id/OIG2.rLpnlnGKrecrQ75cid1y?pid=ImgGn',
+      'https://th.bing.com/th/id/OIG2.fcQRbb.VxbA3KSh2n2xO?w=1024&h=1024&rs=1&pid=ImgDetMain',
+      'https://th.bing.com/th/id/OIG1.jekV7onWBw9ARseZmv1s?pid=ImgGn',
+      'https://th.bing.com/th/id/OIG1.yHqkwOv3t3M6Y36BopTo?pid=ImgGn',
+      'https://th.bing.com/th/id/OIG2.3ZBwVKbn0QoLly0ZFViF?pid=ImgGn',
+      'https://th.bing.com/th/id/OIG3.GW5Dw9GPiEGTPmeT7LAu?pid=ImgGn',
+      'https://th.bing.com/th/id/OIG1.oTCHYV0M7_NUPKdZ5zw6?pid=ImgGn',
+      'https://th.bing.com/th/id/OIG3.xid2E1pC3ijlP2xMeTO1?pid=ImgGn',
+      'https://th.bing.com/th/id/OIG2.MDjEZFg4shlvuzfDNCU0?w=1024&h=1024&rs=1&pid=ImgDetMain',
+      'https://th.bing.com/th/id/OIG1.Iae9NhUChb4bT9A0mW9b?pid=ImgGn',
+      'https://th.bing.com/th/id/OIG1._w3ynqKAyakAYgzESHkB?w=1024&h=1024&rs=1&pid=ImgDetMain',
+      'https://th.bing.com/th/id/OIG1.Rb4VSe62GvThGcWS4vaq?pid=ImgGn',
+      'https://th.bing.com/th/id/OIG4.TWv1WgxxCMAEb6JZCNCN?w=1024&h=1024&rs=1&pid=ImgDetMain',
+      'https://th.bing.com/th/id/OIG2.Lw0kphzxXNfTFmqFSL13?pid=ImgGn'
+        // Add more image paths here
+    ];
+
+    document.getElementById('showImageBtn').addEventListener('click', showRandomImage);
+
+    function showRandomImage() {
+        const randomIndex = Math.floor(Math.random() * images.length);
+        const randomImage = images[randomIndex];
+        const imageElement = document.getElementById('randomImage');
+        imageElement.src = randomImage;
+        imageElement.style.display = 'block';
+    }
+  </script>
+</body>
+
+</html>

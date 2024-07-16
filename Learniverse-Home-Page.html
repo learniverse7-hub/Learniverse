@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Learniverse</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+    * {
+      margin: 0;
+      padding: 0;
+      font-family: Roboto, sans-serif;
+    }
+
+    body {
+      background: #D4E6F1;
+    }
+
+    .header {
+      min-height: 100vh;
+      width: 100%;
+      background-size: cover;
+      position: relative;
+      color: #333;
+      background-image: none;
+      background-image: linear-gradient(to bottom right, #AED6F1, #FADBD8);
+    }
+
+    nav {
+      display: flex;
+      padding: 2% 6%;
+      justify-content: space-between;
+      align-items: center;
+      color: #111;
+    }
+
+    nav h2 {
+      width: 150px;
+      text-decoration: none;
+      font-size: 35px;
+    }
+    .nav-links {
+      flex: 1;
+      text-align: right;
+    }
+
+    .nav-links ul li {
+      list-style: none;
+      display: inline-block;
+      padding: 8px 30px;
+      position: relative;
+    }
+
+    .nav-links ul li a {
+      color: #222;
+      text-decoration: none;
+      font-size: 15px;
+    }
+
+    .nav-links ul li a::after {
+      content: '';
+      width: 0%;
+      height: 2px;
+      background: #222;
+      display: block;
+      margin: auto;
+      transition: 0.5s;
+    }
+
+    .nav-links ul li a:hover::after {
+      width: 100%;
+      background: #222;
+    }
+
+    #learniverse {
+      text-decoration: none;
+      color: #222;
+    }
+
+    .text-box {
+      width: 90%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: left;
+      color: #222;
+    }
+
+    .text-box h1 {
+      font-size: 62px;
+    }
+
+    .text-box p {
+      margin: 10px 0 40px;
+      font-size: 20px;
+    }
+    .tim-img{
+      padding-right: 20px;
+    }
+    p {
+      color: #333;
+      font-size: 17px;
+      font-weight: 300;
+      line-height: 22px;
+      padding: 10px;
+    }
+
+    .row1 {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      margin-top: 5%;
+      margin-left: 100px;
+      width: 80%;
+    }
+
+    .welcome {
+      max-width: 100%;
+      margin: 0 auto;
+      padding: 20px;
+      text-align: center;
+      background-image: none;
+      background-size: cover;
+      position: relative;
+      background-image: linear-gradient(to bottom left, #FADBD8, #AED6F1);
+    }
+    .welcome h1{
+      font-size: 35px;
+      padding: 10px;
+    }
+    .welcome p{
+      max-width: 50%;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .hero-btn{
+      display: inner-block;
+      text-decoration: none;
+      color: #222;
+      border: 1px solid #222;
+      padding: 12px 34px;
+      font-size: 13px;
+      background: transparent;
+      position: relative;
+      cursor: pointer;
+    }
+    .hero-btn:hover{
+      border: 1px solid #222;
+      background: #222;
+      color: #AED6F1;
+      transition: 1s;
+    }
+    .games {
+      width: 100%;
+      margin: 0 auto;
+      text-align: center;
+      padding-top: 100px;
+      background-image: linear-gradient(to bottom right, #AED6F1, #FADBD8);
+    }
+
+    .games h1 {
+      font-size: 35px;
+      font-weight: 600;
+    }
+    .quiz {
+      width: 100%;
+      margin: 0 auto;
+      text-align: center;
+      padding-top: 100px;
+      background-image: linear-gradient(to bottom left, #FADBD8, #AED6F1);
+    }
+
+    .quiz h1 {
+      font-size: 35px;
+      font-weight: 600;
+    }
+
+    p {
+      color: #333;
+      font-size: 17px;
+      font-weight: 300;
+      line-height: 22px;
+      padding: 10px;
+    }
+    .games p{
+      width: 80%;
+      margin: 0 auto;
+    }
+    .quiz p{
+      width: 80%;
+      margin: 0 auto;
+    }
+
+    .game-box {
+      flex-basis: 31%;
+      background: transparent;
+      border-radius: 10px;
+      margin-bottom: 5%;
+      padding: 20px 12px;
+      box-sizing: border-box;
+      transition: 0.5s;
+      text-align: left;
+    }
+    .quiz-box {
+      flex-basis: 31%;
+      background: transparent;
+      border-radius: 10px;
+      margin-bottom: 5%;
+      padding: 20px 12px;
+      box-sizing: border-box;
+      transition: 0.5s;
+      text-align: left;
+    }
+
+    h3 {
+      font-weight: 300px;
+      font-size: 25px;
+      margin: 10px 0;
+    }
+
+    .game-box:hover {
+      box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+    }
+    .quiz-box:hover {
+      box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+    }
+    .game-box a{
+      text-decoration: none;
+      color: #002359;
+    }
+    .quiz-box a{
+      text-decoration: none;
+      color: #002359;
+    }
+    .game-box img{
+      border-radius: 10px;
+      width: 300px;
+      height: 150px;
+    }
+  </style>
+</head>
+
+<body>
+  <section class="header">
+    <nav>
+      <a href="learniverse.html" id="learniverse">
+        <h2>Learniverse</h2>
+      </a>
+      <div class="nav-links" id="navLinks">
+        <ul>
+          <li><a href="learniverse.html">Home</a></li>
+          <li><a href="#games">Games</a></li>
+          <li><a href="#quizzes">Quizzes</a></li>
+      </div>
+    </nav>
+    <div class="text-box">
+    <h1>Learniverse</h1>
+    <p>Step Inside Learniverse: A Universe of English Adventures Awaits!</p>
+      <a href="#welcome" class="hero-btn">Visit us to know more</a>
+    </div>
+    <img src="Tim-with-books.png" class="tim-img" align="right">
+  </section>
+
+  <section class="welcome" id="welcome">
+    <h1>Welcome to Learniverse</h1>
+    <p>At Learniverse, we believe that learning a language should be an exciting journey—a voyage of discovery where words come alive, sentences dance, and grammar becomes an art form. Whether you’re a curious beginner or a seasoned language enthusiast, this universe is yours to explore.</p>
+  </section>
+  <section class="games" id="games">
+    <h1>Explore Word Games: Fun and Educational Challenges</h1>
+    <p>At Learniverse, we offer a variety of captivating word games, including Hangman, Word Search, and Word Guessing. These games provide entertaining ways to improve vocabulary and spelling skills while keeping you engaged and entertained. Join us in the world of word play and embark on a journey of learning and fun!</p>
+
+    <div class="row1">
+      <div class="game-box">
+        <img src="hangman.jpeg">
+        <h3>Hangman:</h3>
+        <p>Explore Hangman: Unravel the mystery word, letter by letter, before it's too late!</p>
+        <a href="hangman.html">view ></a>
+      </div>
+        <div class="game-box">
+          <img src="word-scramble.jpeg">
+          <h3>Word Scramble:</h3>
+          <p>Unscramble letters to form words in this fun and challenging game!</p>
+          <a href="word-scramble.html">view ></a>
+        </div>
+      <div class="game-box">
+        <img src="word-guessing.jpeg">
+        <h3>Word Guessing:</h3>
+        <p>Guess the hidden word with minimal clues—test your vocabulary and intuition!</p>
+        <a href="word-guessing.html">view ></a>
+      </div>
+      <div class="game-box">
+        <img src="typing-speed-test.jpeg">
+        <h3>Typing Speed Test Game:</h3>
+        <p>Race against the clock as you type sentences, quotes, and passages. Accuracy and speed matter—can you keep up? Challenge yourself and improve your keyboard skills!</p>
+        <a href="typing-speed-test.html">view ></a>
+      </div>
+      <div class="game-box">
+        <img src="memory-game.jpeg">
+        <h3>Memory Game:</h3>
+        <p>Flip cards to find matching pairs and test your visual memory. Challenge yourself to remember card positions and have fun!</p>
+        <a href="memory-game.html">view ></a>
+      </div>
+        <div class="game-box">
+          <img src="image-description.jpeg">
+          <h3>Image Description:</h3>
+          <p>Explore vivid images and articulate your observations with clarity. Describe colors, shapes, and scenes in detail, enhancing your descriptive skills while enjoying the visual journey!</p>
+          <a href="image-description.html">view ></a>
+        </div>
+      </div>
+  </section>
+  <section class="quiz" id="quizzes">
+    <h1>Test Your Knowledge with Fun Quizzes</h1>
+    <p>Engage with a variety of quizzes that challenge your knowledge and help you learn in an interactive way. From vocabulary and grammar to general knowledge, there's a quiz for everyone. Dive in and see how much you know!</p>
+    <div class="row1">
+      <div class="quiz-box">
+        <h3>Vocab Quiz:</h3>
+        <p>Test your understanding of vocabularies with this quiz!</p>
+        <a href="vocab-quiz.html">view ></a>
+      </div>
+      <div class="quiz-box">
+        <h3>Grammar Quiz (Present & Past Simple):</h3>
+        <p>Test your understanding of basic tenses with these simple sentence quizzes!</p>
+        <a href="gram-quiz(present&past-simple).html">view ></a>
+      </div>
+      <div class="quiz-box">
+        <h3>Grammar Quiz (Present & Past Continues):</h3>
+        <p>Practice continuous tenses and enhance your grammar skills with these quizzes!</p>
+        <a href="gram-quiz(present&past-continues).html">view ></a>
+      </div>
+      <div class="quiz-box">
+        <h3>Grammar Quiz (Present & Past Perfect Simple):</h3>
+        <p>Challenge yourself with perfect tenses and improve your grammar proficiency!</p>
+        <a href="gram-quiz(present&past-perfect-simple).html">view ></a>
+      </div>
+      <div class="quiz-box">
+        <h3>Grammar Quiz (Present & Past Perfect Continues):</h3>
+        <p>Master the perfect continuous tenses with these engaging and informative quizzes!</p>
+        <a href="gram-quiz(present&past-perfect-continues).html">view ></a>
+      </div>
+      <div class="quiz-box">
+        <h3>Grammar Quiz (Passive):</h3>
+        <p>Learn and practice passive voice with these easy-to-follow grammar quizzes!</p>
+        <a href="gram-quiz(passive).html">view ></a>
+      </div>
+      <div class="quiz-box">
+        <h3>Grammar Quiz (WH Questions):</h3>
+        <p>Enhance your questioning skills with these quizzes on Wh- questions!</p>
+        <a href="gram-quiz(wh).html">view ></a>
+      </div>
+      <div class="quiz-box">
+        <h3>Grammar Quiz (If Conditionals):</h3>
+        <p>Explore different conditional sentences and test your understanding with these quizzes!</p>
+        <a href="gram-quiz(if-conditionals).html">view ></a>
+      </div>
+      <div class="quiz-box">
+        <h3>Grammar Quiz (Modals):</h3>
+        <p>Practice using modal verbs correctly with these interactive grammar quizzes!</p>
+        <a href="gram-quiz(modals).html">view ></a>
+      </div>
+      <div class="quiz-box">
+        <h3>Grammar Quiz (Future Tense):</h3>
+        <p>Understand future tenses better with these simple and fun quizzes!</p>
+        <a href="gram-quiz(future).html">view ></a>
+      </div>
+      <div class="quiz-box">
+        <h3>Grammar Quiz (Reported Speech):</h3>
+        <p>Test your skills in transforming direct speech into reported speech with these quizzes!</p>
+        <a href="gram-quiz(reported-speech).html">view ></a>
+      </div>
+      <div class="quiz-box">
+        <h3>Grammar Quiz (Countable and Uncountable Nouns):</h3>
+        <p>Learn to distinguish between countable and uncountable nouns with these quizzes!</p>
+        <a href="gram-quiz(count-uncount).html">view ></a>
+      </div>
+    </div>
+  </section>
+  <script>
+document.addEventListener('DOMContentLoaded', function () {
+        const links = document.querySelectorAll('a[href^="#"]');
+
+        for (const link of links) {
+            link.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        }
+    });
+  </script>
+</body>
+
+</html>
